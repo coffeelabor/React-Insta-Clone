@@ -1,4 +1,5 @@
 import React from "react";
+import "./CommentSection.scss";
 
 class CommentSection extends React.Component {
   state = {
@@ -29,10 +30,10 @@ class CommentSection extends React.Component {
       <div className="comment-section">
         {this.state.comments.map(comment => {
           return (
-            <>
+            <div className="comment">
               <h3>{comment.username}</h3>
               <p>{comment.text}</p>
-            </>
+            </div>
           );
         })}
         <p className="timestamp">{this.props.timestamp}</p>
@@ -43,6 +44,7 @@ class CommentSection extends React.Component {
             value={this.state.newComment}
             onChange={this.changeHandler}
             placeholder="add a comment ..."
+            searchFilter={this.searchFilter}
           />
         </form>
       </div>

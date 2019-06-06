@@ -1,5 +1,6 @@
 import React from "react";
 import CommentSection from "../CommentSection/CommentSection";
+import "./PostContainer.scss";
 
 class PostContainer extends React.Component {
   render() {
@@ -8,8 +9,8 @@ class PostContainer extends React.Component {
         {this.props.filteredPosts.length === 0
           ? this.props.data.map(post => {
               return (
-                <>
-                  <header>
+                <div className="post">
+                  <header className="header">
                     <img src={post.thumbnailUrl} alt="thumbnail" />
                     <h3>{post.username}</h3>
                   </header>
@@ -22,13 +23,13 @@ class PostContainer extends React.Component {
                     comments={post.comments}
                     timestamp={post.timestamp}
                   />
-                </>
+                </div>
               );
             })
           : this.props.filteredPosts.map(post => {
               return (
                 <>
-                  <header>
+                  <header className="header">
                     <img src={post.thumbnailUrl} alt="thumbnail" />
                     <h3>{post.username}</h3>
                   </header>

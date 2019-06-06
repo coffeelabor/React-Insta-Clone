@@ -5,6 +5,25 @@ class CommentSection extends React.Component {
     comments: this.props.comments,
     newComment: ""
   };
+
+  addNewComment = e => {
+    e.preventDefault();
+    const newComment = {
+      username: "Reed",
+      text: this.state.newComment
+    };
+    this.setState({
+      comments: [...this.state.comments, newComment],
+      newComment: ""
+    });
+  };
+
+  changeHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className="comment-section">
@@ -17,7 +36,15 @@ class CommentSection extends React.Component {
           );
         })}
         <p className="timestamp">{this.props.timestamp}</p>
-        <input type="text" name="newComment" placeholder="add a comment ..." />
+        <form onSubmit={this.changeHandler}>
+          <input
+            type="text"
+            name="newComment"
+            value={this.state.newComment}
+            onChange={this.changeHandler}
+            placeholder="add a comment ..."
+          />
+        </form>
       </div>
     );
   }

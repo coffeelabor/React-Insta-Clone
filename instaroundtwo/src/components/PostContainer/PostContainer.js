@@ -1,6 +1,15 @@
 import React from "react";
 import CommentSection from "../CommentSection/CommentSection";
 import "./PostContainer.scss";
+import styled from "styled-components";
+
+const HeaderStyle = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+`;
 
 class PostContainer extends React.Component {
   render() {
@@ -10,10 +19,14 @@ class PostContainer extends React.Component {
           ? this.props.data.map(post => {
               return (
                 <div className="post">
-                  <header className="header">
-                    <img src={post.thumbnailUrl} alt="thumbnail" />
+                  <HeaderStyle>
+                    <img
+                      className="thumbnail"
+                      src={post.thumbnailUrl}
+                      alt="thumbnail"
+                    />
                     <h3>{post.username}</h3>
-                  </header>
+                  </HeaderStyle>
 
                   <img src={post.imageUrl} alt="mainImage" />
 

@@ -1,5 +1,11 @@
 import React from "react";
 import "./CommentSection.scss";
+import styled from "styled-components";
+
+const CommentStyled = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 class CommentSection extends React.Component {
   state = {
@@ -30,10 +36,10 @@ class CommentSection extends React.Component {
       <div className="comment-section">
         {this.state.comments.map(comment => {
           return (
-            <div className="comment">
+            <CommentStyled>
               <h3>{comment.username}</h3>
               <p>{comment.text}</p>
-            </div>
+            </CommentStyled>
           );
         })}
         <p className="timestamp">{this.props.timestamp}</p>
